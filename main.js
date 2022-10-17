@@ -1,35 +1,56 @@
 (function tictactoe(){
 
     const dashboardArr = [
-        {name: "boxZero", content: "1"}, {name: "boxOne", content: " "}, {name: "boxTwo", content: " "},
-        {name: "boxThree", content: " "}, {name: "boxFour", content: " "}, {name: "boxFive", content: " "},
-        {name: "boxSix", content: " "}, {name: "boxSeven", content: " "}, {name: "boxEight", content: " "},
+        "2"," "," ",
+        " "," "," ",
+        " "," "," ",
     ]
 
+    const displayRender = () =>{
+
+        let createGrid = (board, boardSize = 3) => {
+            let divs = boardSize * boardSize;
+            for(let i = 0; i < divs; i++){
+                let boardDiv = document.createElement('div');
+                boardDiv.setAttribute('class', 'divBoard');
+                boardDiv.setAttribute('data-key', `${i}`);
+                board.appendChild(boardDiv);
+            }
+        }
+
+        return{createGrid}
+
+    }
+/*
     const displayControler = (() =>{
         
         let boardRender = (arr, board) =>{
             for(i = 0; i < arr.length; i++){
-                board[`data-handler = "${i}"`].textContent = arr[i].content
+                board[`data-handler = "${i}"`].textContent = arr[i];
             }
         }
 
         return{boardRender}
 
     })();
-    
+*/
+
     let dashboardDiv = document.querySelector('.dashboardDiv');
     let boxDiv = document.querySelectorAll('.box');
+
+    displayRender().createGrid(dashboardDiv);
 
     dashboardDiv.addEventListener('click', (e) =>{
         console.log(e.target.id);
         console.log(e.target.getAttribute('data-handler'));
 
         console.log(dashboardArr);
-        displayControler.boardRender(dashboardArr, dashboardDiv);
+        //displayControler.boardRender(dashboardArr, boxDiv);
     })
 
 })();
+
+
 /*
 const calculator = (() => {
     const add = (a, b) => a + b;

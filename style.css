@@ -362,12 +362,12 @@
     grid-template-rows: repeat(3, 200px);
   }
 
-  div.box{
+  div.divBoard{
     width: 200px;
     height: 200px;
     border: 1px solid red;
   }
 
-  div.box:hover{
+  div.divBoard:hover{
     background-color: khaki;
   }
