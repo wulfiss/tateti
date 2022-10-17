@@ -1,6 +1,6 @@
 (function tictactoe(){
 
-    const boardData = (boardSize = 3) => {
+    const createArrBoard = (boardSize = 3) => {
         const dashboardArr = [];
         let board = boardSize * boardSize;
 
@@ -49,7 +49,7 @@ canvas.style.setProperty('grid-template-columns', `repeat(${$slider.value}, 1fr)
 
     let dashboardDiv = document.querySelector('.dashboardDiv');
     let boxDiv = document.querySelectorAll('.box');
-    console.log(boardData());
+    console.log(createArrBoard());
 
     displayRender().createGrid(dashboardDiv);
 
