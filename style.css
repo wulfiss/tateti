@@ -358,13 +358,13 @@
     height: 600px;
     border: 1px solid red;
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
   }
 
   div.divBoard{
-    width: 200px;
-    height: 200px;
+    width: auto;
+    height: auto;
     border: 1px solid red;
   }
 

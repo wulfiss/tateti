@@ -10,6 +10,8 @@
 
         let createGrid = (board, boardSize = 3) => {
             let divs = boardSize * boardSize;
+            board.style.setProperty('grid-template-columns', `repeat(${boardSize}, 1fr)`);
+
             for(let i = 0; i < divs; i++){
                 let boardDiv = document.createElement('div');
                 boardDiv.setAttribute('class', 'divBoard');
@@ -22,6 +24,10 @@
 
     }
 /*
+
+
+canvas.style.setProperty('grid-template-columns', `repeat(${$slider.value}, 1fr)`);
+
     const displayControler = (() =>{
         
         let boardRender = (arr, board) =>{
