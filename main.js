@@ -1,10 +1,16 @@
 (function tictactoe(){
 
-    const dashboardArr = [
-        "2"," "," ",
-        " "," "," ",
-        " "," "," ",
-    ]
+    const boardData = (boardSize = 3) => {
+        const dashboardArr = [];
+        let board = boardSize * boardSize;
+
+        for(let i = 0; i < board; i++){
+            dashboardArr.push('');
+        }
+
+        return(dashboardArr);
+    }
+    
 
     const displayRender = () =>{
 
@@ -43,6 +49,7 @@ canvas.style.setProperty('grid-template-columns', `repeat(${$slider.value}, 1fr)
 
     let dashboardDiv = document.querySelector('.dashboardDiv');
     let boxDiv = document.querySelectorAll('.box');
+    console.log(boardData());
 
     displayRender().createGrid(dashboardDiv);
 
