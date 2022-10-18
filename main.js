@@ -1,17 +1,6 @@
 (function tictactoe(){
 
-    /*const createArrBoard = (boardSize = 3) => {
-        const dashboardArr = [];
-        let board = boardSize * boardSize;
-
-        for(let i = 0; i < board; i++){
-            dashboardArr.push('');
-        }
-
-        return dashboardArr ;
-    };*/
-
-    const createArrBoard = ["", "", "", "", "", "", "", "", ""];
+    const ArrBoard = ["", "", "", "", "", "", "", "", ""];
     
 
     const displayRender = () =>{
@@ -28,20 +17,25 @@
             }
         }
 
-        function XOArrRender(arr, key){
-            arr[key] = "X";
+        function XOArrRender(arr, key, symbol){
+            if(arr[key] == ""){
+                arr[key] = symbol;
+            }
         }
 
-        function XOBoardRender(target){
-            target.textContent = "X";
+        function XOBoardRender(target, symbol){
+
+            if (target.textContent == ""){
+                target.textContent = symbol;
+            }
         }
+
 
         return{createGrid, XOArrRender, XOBoardRender}
 
     }
 
     function input(){
-        //let key = e.target.getAttribute('data-key');
         let gameBoardDiv = document.querySelector('.game-board');
 
         return{
@@ -49,39 +43,25 @@
         }
 
     }
+
+    function XO(){
+        if (symbol == "X"){
+            symbol = "O";
+        } else if (symbol == "O"){
+            symbol = "X";
+        }
+    }
     
 
     displayRender().createGrid(input()["gameBoardDiv"]);
 
-    
+    let symbol = "O";
 
     input()["gameBoardDiv"].addEventListener('click', (e) =>{
-
-        console.log(e.target.getAttribute('data-key'));
-        displayRender().XOBoardRender(e.target);
-        displayRender().XOArrRender(createArrBoard, (e.target.getAttribute('data-key')));
-        console.log(createArrBoard);
-    
+        XO();
+        displayRender().XOBoardRender(e.target, symbol);
+        displayRender().XOArrRender(ArrBoard, (e.target.getAttribute('data-key')), symbol);
+        console.log(ArrBoard);
     })
 
 })();
-
-
-/*
-const calculator = (() => {
-    const add = (a, b) => a + b;
-    const sub = (a, b) => a - b;
-    const mul = (a, b) => a * b;
-    const div = (a, b) => a / b;
-    return {
-      add,
-      sub,
-      mul,
-      div,
-    };
-  })();
-  
-  calculator.add(3,5); // 8
-  calculator.sub(6,2); // 4
-  calculator.mul(14,5534); // 77476
-  */
