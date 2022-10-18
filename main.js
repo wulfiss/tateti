@@ -1,6 +1,6 @@
 (function tictactoe(){
 
-    const createArrBoard = (boardSize = 3) => {
+    /*const createArrBoard = (boardSize = 3) => {
         const dashboardArr = [];
         let board = boardSize * boardSize;
 
@@ -8,8 +8,10 @@
             dashboardArr.push('');
         }
 
-        return(dashboardArr);
-    }
+        return dashboardArr ;
+    };*/
+
+    const createArrBoard = ["", "", "", "", "", "", "", "", ""];
     
 
     const displayRender = () =>{
@@ -26,39 +28,29 @@
             }
         }
 
-        return{createGrid}
-
-    }
-/*
-
-
-canvas.style.setProperty('grid-template-columns', `repeat(${$slider.value}, 1fr)`);
-
-    const displayControler = (() =>{
-        
-        let boardRender = (arr, board) =>{
-            for(i = 0; i < arr.length; i++){
-                board[`data-handler = "${i}"`].textContent = arr[i];
-            }
+        function XOArrRender(arr, key){
+            arr[key] = "X";
         }
 
-        return{boardRender}
+        function XOBoardRender(target){
+            target.textContent = "X";
+        }
 
-    })();
-*/
+        return{createGrid, XOArrRender, XOBoardRender}
+
+    }
 
     let dashboardDiv = document.querySelector('.dashboardDiv');
-    let boxDiv = document.querySelectorAll('.box');
-    console.log(createArrBoard());
+    
 
     displayRender().createGrid(dashboardDiv);
 
     dashboardDiv.addEventListener('click', (e) =>{
-        console.log(e.target.id);
-        console.log(e.target.getAttribute('data-handler'));
-
-        console.log(dashboardArr);
-        //displayControler.boardRender(dashboardArr, boxDiv);
+        console.log(e.target.getAttribute('data-key'));
+        displayRender().XOBoardRender(e.target);
+        let key = e.target.getAttribute('data-key');
+        displayRender().XOArrRender(createArrBoard, key);
+        console.log(createArrBoard);
     })
 
 })();
