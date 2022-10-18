@@ -40,17 +40,28 @@
 
     }
 
-    let dashboardDiv = document.querySelector('.dashboardDiv');
+    function input(){
+        //let key = e.target.getAttribute('data-key');
+        let gameBoardDiv = document.querySelector('.game-board');
+
+        return{
+            gameBoardDiv
+        }
+
+    }
     
 
-    displayRender().createGrid(dashboardDiv);
+    displayRender().createGrid(input()["gameBoardDiv"]);
 
-    dashboardDiv.addEventListener('click', (e) =>{
+    
+
+    input()["gameBoardDiv"].addEventListener('click', (e) =>{
+
         console.log(e.target.getAttribute('data-key'));
         displayRender().XOBoardRender(e.target);
-        let key = e.target.getAttribute('data-key');
-        displayRender().XOArrRender(createArrBoard, key);
+        displayRender().XOArrRender(createArrBoard, (e.target.getAttribute('data-key')));
         console.log(createArrBoard);
+    
     })
 
 })();
