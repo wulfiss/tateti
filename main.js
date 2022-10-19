@@ -59,6 +59,28 @@
             return false;
         }
     }
+
+    function checkGame(arr){
+            if (arr[0] !== "" && arr[0] == arr[1] && arr[0] == arr[2]){
+                return alert(`${arr[0]} WINS!`);
+            }else if(arr[3] !== "" && arr[3] == arr[4] && arr[3] == arr[5]){
+                return alert(`${arr[3]} WINS!`);
+            }else if(arr[6] !== "" && arr[6] == arr[7] && arr[6] == arr[8]){
+                return alert(`${arr[6]} WINS!`);
+            }else if(arr[0] !== "" && arr[0] == arr[3] && arr[0] == arr[6]){
+                return alert(`${arr[0]} WINS!`);
+            }else if(arr[1] !== "" && arr[1] == arr[4] && arr[1] == arr[7]){
+                return alert(`${arr[1]} WINS!`);
+            }else if(arr[2] !== "" && arr[2] == arr[5] && arr[2] == arr[8]){
+                return alert(`${arr[2]} WINS!`);
+            }else if(arr[0] !== "" && arr[0] == arr[4] && arr[0] == arr[8]){
+                return alert(`${arr[0]} WINS!`);
+            }else if(arr[2] !== "" && arr[2] == arr[4] && arr[2] == arr[6]){
+                return alert(`${arr[2]} WINS!`);
+            }else{
+                return false;
+            }
+    }
     
 
     displayRender().createGrid(input()["gameBoardDiv"]);
@@ -71,6 +93,7 @@
         displayRender().XOBoardRender(e.target, symbol);
         displayRender().XOArrRender(ArrBoard, (e.target.getAttribute('data-key')), symbol);
         console.log(ArrBoard);
+        checkGame(ArrBoard);
     })
 
 })();
