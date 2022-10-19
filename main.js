@@ -18,6 +18,7 @@
         }
 
         function XOArrRender(arr, key, symbol){
+
             if(arr[key] == ""){
                 arr[key] = symbol;
             }
@@ -27,6 +28,9 @@
 
             if (target.textContent == ""){
                 target.textContent = symbol;
+                pass = true;
+            } else {
+                pass = false;
             }
         }
 
@@ -45,10 +49,14 @@
     }
 
     function XO(){
-        if (symbol == "X"){
-            symbol = "O";
-        } else if (symbol == "O"){
-            symbol = "X";
+        if(pass == true){
+            if (symbol == "X"){
+                symbol = "O";
+            } else if (symbol == "O"){
+                symbol = "X";
+            }
+        } else{
+            return false;
         }
     }
     
@@ -56,6 +64,7 @@
     displayRender().createGrid(input()["gameBoardDiv"]);
 
     let symbol = "O";
+    let pass = true;
 
     input()["gameBoardDiv"].addEventListener('click', (e) =>{
         XO();
