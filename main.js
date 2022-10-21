@@ -61,25 +61,73 @@
     }
 
     function checkGame(arr){
-            if (arr[0] !== "" && arr[0] == arr[1] && arr[0] == arr[2]){
-                return alert(`${arr[0]} WINS!`);
-            }else if(arr[3] !== "" && arr[3] == arr[4] && arr[3] == arr[5]){
-                return alert(`${arr[3]} WINS!`);
-            }else if(arr[6] !== "" && arr[6] == arr[7] && arr[6] == arr[8]){
-                return alert(`${arr[6]} WINS!`);
-            }else if(arr[0] !== "" && arr[0] == arr[3] && arr[0] == arr[6]){
-                return alert(`${arr[0]} WINS!`);
-            }else if(arr[1] !== "" && arr[1] == arr[4] && arr[1] == arr[7]){
-                return alert(`${arr[1]} WINS!`);
-            }else if(arr[2] !== "" && arr[2] == arr[5] && arr[2] == arr[8]){
-                return alert(`${arr[2]} WINS!`);
-            }else if(arr[0] !== "" && arr[0] == arr[4] && arr[0] == arr[8]){
-                return alert(`${arr[0]} WINS!`);
-            }else if(arr[2] !== "" && arr[2] == arr[4] && arr[2] == arr[6]){
-                return alert(`${arr[2]} WINS!`);
-            }else{
-                return false;
+        if (pass == true){
+            let squareRoot = Math.sqrt(arr.length);
+            let temp = [];
+
+            function winLose(){
+                if(temp[0] != ""){
+                    if(temp.every(el => el === temp[0])){
+                        return alert(`${temp[0]} WINS!!!`);
+                    }else{
+                        return false;
+                    }
+                }
             }
+
+            for(let y = 0; y < arr.length; (y += squareRoot)){
+                for (let x = y; x < (y + squareRoot); x++){
+                    temp.push(arr[x]);
+                    }
+                winLose();
+                temp = [];
+            }
+
+            for(let x = 0; x < squareRoot; x++){
+                for(let y = x; y < arr.length; (y += squareRoot)){
+                    temp.push(arr[y]);
+                    }
+                winLose();
+                temp = [];
+            }
+
+            for(let x = 0; x < arr.length; (x += (squareRoot + 1))){
+                temp.push(arr[x]);
+            }
+            winLose();
+            temp = [];
+
+            for(let x = (squareRoot - 1); x < (arr.length - 1); (x += (squareRoot - 1))){
+                temp.push(arr[x]);
+            }
+            winLose();
+            temp = [];
+
+
+    /*
+                if (arr[0] !== "" && arr[0] == arr[1] && arr[0] == arr[2]){
+                    return alert(`${arr[0]} WINS!`);
+                }else if(arr[3] !== "" && arr[3] == arr[4] && arr[3] == arr[5]){
+                    return alert(`${arr[3]} WINS!`);
+                }else if(arr[6] !== "" && arr[6] == arr[7] && arr[6] == arr[8]){
+                    return alert(`${arr[6]} WINS!`);
+                }else if(arr[0] !== "" && arr[0] == arr[3] && arr[0] == arr[6]){
+                    return alert(`${arr[0]} WINS!`);
+                }else if(arr[1] !== "" && arr[1] == arr[4] && arr[1] == arr[7]){
+                    return alert(`${arr[1]} WINS!`);
+                }else if(arr[2] !== "" && arr[2] == arr[5] && arr[2] == arr[8]){
+                    return alert(`${arr[2]} WINS!`);
+                }else if(arr[0] !== "" && arr[0] == arr[4] && arr[0] == arr[8]){
+                    return alert(`${arr[0]} WINS!`);
+                }else if(arr[2] !== "" && arr[2] == arr[4] && arr[2] == arr[6]){
+                    return alert(`${arr[2]} WINS!`);
+                }else{
+                    return false;
+                }
+        */
+        } else{
+            return false;
+        }
     }
     
 
@@ -92,7 +140,7 @@
         XO();
         displayRender().XOBoardRender(e.target, symbol);
         displayRender().XOArrRender(ArrBoard, (e.target.getAttribute('data-key')), symbol);
-        console.log(ArrBoard);
+        //console.log(ArrBoard);
         checkGame(ArrBoard);
     })
 
