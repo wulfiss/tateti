@@ -1,7 +1,4 @@
-(function tictactoe(){
-
-    const ArrBoard = ["", "", "", "", "", "", "", "", ""];
-    
+(function tictactoe(){ 
 
     const displayRender = () =>{
 
@@ -67,10 +64,10 @@
         function winLose(la){
             if(temp[0] != "" && la == 'win'){
                 if(temp.every(el => el === temp[0])){
-                    return alert(`${temp[0]} WINS!!!`);
+                    alert(`${temp[0]} WINS!!!`);
                 }
             }else if(la == 'tie'){
-                return alert("IT'S A TIE!!!");
+                alert("IT'S A TIE!!!");
             }else{
                 return false
             }
@@ -115,18 +112,22 @@
         }
     }
     
-
-    displayRender().createGrid(input()["gameBoardDiv"]);
-
-    let symbol = "O";
     let pass = true;
+    let symbol = "O";
 
-    input()["gameBoardDiv"].addEventListener('click', (e) =>{
-        XO();
-        displayRender().XOBoardRender(e.target, symbol);
-        displayRender().XOArrRender(ArrBoard, (e.target.getAttribute('data-key')), symbol);
-        //console.log(ArrBoard);
-        checkGame(ArrBoard);
-    })
+    (function letsPlay(){
+
+        displayRender().createGrid(input()["gameBoardDiv"]);
+
+        const ArrBoard = ["", "", "", "", "", "", "", "", ""];      
+
+        input()["gameBoardDiv"].addEventListener('click', (e) =>{
+            XO();
+            displayRender().XOBoardRender(e.target, symbol);
+            displayRender().XOArrRender(ArrBoard, (e.target.getAttribute('data-key')), symbol);
+            checkGame(ArrBoard);
+        })
+
+    })()
 
 })();
