@@ -9,8 +9,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="start">
+        <h1>Tic Tac Toe</h1>
+        <form action="">
+            <p>Enter name's player:</p>
+            <label for="pONE">Player X:</label>
+            <input type="text" name="playerOne" id="pONE" value="Player One">
+            <label for="pTWO">Player O:</label>
+            <input type="text" name="playerTwo" id="pTWO" value="Player Two">
+            <button type="button" class="startGame" id="letsPlay">Let's Play!</button>    
+        </form>
+    </div>
     <div class="game-board"></div>
-    <div></div>
+    <div class="finishDiv">
+        <h1>Congratulations!!!</h1>
+        <h1><span id="winner"></span>WINS!!!</h1>
+        <form action="">
+            <button type="button" id="playAgain">Play again</button>
+            <button type="button" id="newGame">Start new game</button>
+        </form>
+    </div>
 </body>
 </html>
 
