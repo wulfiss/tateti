@@ -1,4 +1,4 @@
-(function tictactoe(){ 
+const tictactoe = () => { 
 
     const displayRender = () =>{
 
@@ -25,9 +25,9 @@
 
             if (target.textContent == ""){
                 target.textContent = symbol;
-                pass = true;
+                game()['pass'] = true;
             } else {
-                pass = false;
+                game()['pass'] = false;
             }
         }
 
@@ -36,7 +36,7 @@
 
     }
 
-    function input(){
+    function inputBoard(){
         let gameBoardDiv = document.querySelector('.game-board');
 
         return{
@@ -46,7 +46,7 @@
     }
 
     function XO(){
-        if(pass == true){
+        if(game()['pass'] == true){
             if (symbol == "X"){
                 symbol = "O";
             } else if (symbol == "O"){
@@ -73,7 +73,7 @@
             }
         }
 
-        if (pass == true){
+        if (game()['pass'] == true){
             
             for(let y = 0; y < arr.length; (y += squareRoot)){
                 for (let x = y; x < (y + squareRoot); x++){
@@ -112,22 +112,51 @@
         }
     }
     
-    let pass = true;
-    let symbol = "O";
+    function game(){
+        let pass = true;
+        let symbol = "O";
 
-    (function letsPlay(){
-
-        displayRender().createGrid(input()["gameBoardDiv"]);
+        displayRender().createGrid(inputBoard()["gameBoardDiv"]);
 
         const ArrBoard = ["", "", "", "", "", "", "", "", ""];      
 
-        input()["gameBoardDiv"].addEventListener('click', (e) =>{
+        inputBoard()["gameBoardDiv"].addEventListener('click', (e) =>{
             XO();
             displayRender().XOBoardRender(e.target, symbol);
             displayRender().XOArrRender(ArrBoard, (e.target.getAttribute('data-key')), symbol);
             checkGame(ArrBoard);
         })
+    }
+
+    (function letsPlay(){
+        
+        function input(){
+            let body = document.querySelector('body');
+            let pOne = document.querySelector('pONE');
+            let pTwo = document.querySelector('pTWO');
+
+            return{
+                body
+            }
+        }
+
+        function startGame(){
+            
+        }
+
+        input()['body'].addEventListener('click', (e) =>{
+            if(e.target.id == "letsPlay"){
+                console.log('lalala');
+                game();
+            }
+        })
+
+        return{
+            input
+        }
+
 
     })()
 
-})();
+
+};
