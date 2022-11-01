@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="start">
         <h1>Tic Tac Toe</h1>
         <form action="">
@@ -20,7 +21,19 @@
             <button type="button" class="startGame" id="letsPlay">Let's Play!</button>    
         </form>
     </div>
-    <div class="game-board"></div>
+
+    <div class="game-board">
+        <div class="divBoard" data-key="0"></div>
+        <div class="divBoard" data-key="1"></div>
+        <div class="divBoard" data-key="2"></div>
+        <div class="divBoard" data-key="3"></div>
+        <div class="divBoard" data-key="4"></div>
+        <div class="divBoard" data-key="5"></div>
+        <div class="divBoard" data-key="6"></div>
+        <div class="divBoard" data-key="7"></div>
+        <div class="divBoard" data-key="8"></div>
+    </div>
+
     <div class="finishDiv">
         <h1>Congratulations!!!</h1>
         <h1><span id="winner"></span>WINS!!!</h1>
@@ -29,6 +42,7 @@
             <button type="button" id="newGame">Start new game</button>
         </form>
     </div>
+    
 </body>
 </html>
 
