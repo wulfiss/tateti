@@ -20,10 +20,11 @@
         let $playAgain = document.querySelector('#playAgain');
         let $newGame = document.querySelector('#newGame');
         let $gameBoardDiv = document.querySelector('.game-board');
-
+        let playerNameTurn = document.querySelector('#playerNameTurn');
         return{
             playerX, playerO, $letsPlay,
-            $playAgain, $newGame, $gameBoardDiv
+            $playAgain, $newGame, $gameBoardDiv,
+            playerNameTurn
         }
     }
     
@@ -33,14 +34,31 @@
         players['playerTwo']['name'] = input()['playerO'].value;
     }
 
+    function renderSymbols(target){
+        
+        if(target.dataset.turn == 'free'){
+            if(players['turn']['turn'] == 'playerOne'){
+                target.textContent = 'X';
+                target.dataset.turn = 'used';
+                input()['playerNameTurn'].textContent = players['playerTwo']['name'];
+                players['turn']['turn'] = 'playerTwo';
+            }else if(players['turn']['turn'] == 'playerTwo'){
+                target.textContent = 'O';
+                target.dataset.turn = 'used';
+                input()['playerNameTurn'].textContent = players['playerOne']['name'];
+                players['turn']['turn'] = 'playerOne';
+            }
+        }else if(target.dataset.turn == 'used'){
+            return false;
+        }
+
+    }
+
     const boardDisplay = () =>{
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
-            if(e.target.dataset.turn == 'free'){
-                e.target.textContent = 'X';
-                e.target.dataset.turn = 'used';
-            }else if(e.target.dataset.turn == 'used'){
-                return false;
-            }/*
+            renderSymbols(e.target);
+
+            /*
             console.log(e.target.getAttribute('data-key'));
             console.log(e.target.dataset.turn);
             e.target.dataset.turn = false;
@@ -59,6 +77,7 @@
             console.log(players.turn);
             
             boardDisplay();
+            input()['playerNameTurn'].textContent = players['playerOne']['name'];
         })
     }
 
