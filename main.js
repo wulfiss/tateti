@@ -19,10 +19,11 @@
         let $newGame = document.querySelector('#newGame');
         let $gameBoardDiv = document.querySelector('.game-board');
         let playerNameTurn = document.querySelector('#playerNameTurn');
+        let playerWinner = document.querySelector('#winner');
         return{
             playerX, playerO, $letsPlay,
             $playAgain, $newGame, $gameBoardDiv,
-            playerNameTurn
+            playerNameTurn, playerWinner
         }
     }
     
@@ -114,12 +115,24 @@
 
     }
 
+    function winTiePoints(){
+        if(checkGame(boardArr) == 'playerOne'){
+            input()['playerWinner'].textContent = players['playerOne']['name'];
+            players['playerOne']['points']++;
+        }else if(checkGame(boardArr) == 'playerTwo'){
+            input()['playerWinner'].textContent = players['playerTwo']['name'];
+            players['playerTwo']['points']++;
+        }else{
+            return false;
+        }
+
+    }
     const boardDisplay = () =>{
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
             renderSymbols(e.target);
             completeArr(e.target);
             console.log(boardArr);
-            console.log(checkGame(boardArr));
+            winTiePoints();
         })
     }
 
