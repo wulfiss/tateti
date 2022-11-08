@@ -2,17 +2,15 @@
 
     const players ={
         
-           playerOne: {name: '',
-            marker: 'X',
-            point: 00},       
+            playerOne: {name: '', marker: 'X', points: 00},       
               
-            playerTwo: {name: '',
-            marker: 'O',
-            pointer: 00},
+            playerTwo: {name: '', marker: 'O', points: 00},
         
             turn: {turn:'playerOne'},
     }
     
+    const boardArr = ['', '', '', '', '', '', '', '', '']
+
     const input = () => {
         let playerX = document.querySelector('#pONE');
         let playerO = document.querySelector('#pTWO');
@@ -28,6 +26,15 @@
         }
     }
     
+    function checkNCompleteArr(target){
+        let inx = target.dataset.key;
+
+        if(players['turn']['turn'] == 'playerTwo'){
+            boardArr[inx] = 'playerOne';    
+        }else if(players['turn']['turn'] == 'playerOne'){
+            boardArr[inx] = 'playerTwo';
+        }
+    }
 
     function playerNames(){
         players['playerOne']['name'] = input()['playerX'].value;
@@ -57,13 +64,8 @@
     const boardDisplay = () =>{
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
             renderSymbols(e.target);
-
-            /*
-            console.log(e.target.getAttribute('data-key'));
-            console.log(e.target.dataset.turn);
-            e.target.dataset.turn = false;
-            console.log(e.target.dataset.turn);
-            */
+            checkNCompleteArr(e.target);
+            console.log(boardArr);
         })
     }
 
@@ -71,11 +73,7 @@
     const letsPlay = () => {
         input()['$letsPlay'].addEventListener('click', (e) => {
             input();
-            playerNames();
-            console.log(players.playerOne.name);
-            console.log(players.playerTwo.name);
-            console.log(players.turn);
-            
+            playerNames();         
             boardDisplay();
             input()['playerNameTurn'].textContent = players['playerOne']['name'];
         })
