@@ -26,7 +26,7 @@
         }
     }
     
-    function checkNCompleteArr(target){
+    function completeArr(target){
         let inx = target.dataset.key;
 
         if(players['turn']['turn'] == 'playerTwo'){
@@ -34,6 +34,59 @@
         }else if(players['turn']['turn'] == 'playerOne'){
             boardArr[inx] = 'playerTwo';
         }
+
+    }
+
+    function checkGame(arr){
+        let squareRoot = Math.sqrt(arr.length);
+        let temp = [];
+        let result = '';
+
+        function winLose(la){
+            if(temp[0] != "" && la == 'win'){
+                if(temp.every(el => el === temp[0])){
+                    result = temp[0];
+                }
+            }else if(la == 'tie'){
+                result ='tie';
+            }else{
+                return false;
+            }
+        }
+                   
+        for(let y = 0; y < arr.length; (y += squareRoot)){
+            for (let x = y; x < (y + squareRoot); x++){
+                temp.push(arr[x]);
+                }
+            winLose('win');
+            temp = [];
+        }
+
+        for(let x = 0; x < squareRoot; x++){
+            for(let y = x; y < arr.length; (y += squareRoot)){
+                temp.push(arr[y]);
+                }
+            winLose('win');
+            temp = [];
+        }
+
+        for(let x = 0; x < arr.length; (x += (squareRoot + 1))){
+            temp.push(arr[x]);
+        }
+        winLose('win');
+        temp = [];
+
+        for(let x = (squareRoot - 1); x < (arr.length - 1); (x += (squareRoot - 1))){
+            temp.push(arr[x]);
+        }
+        winLose('win');
+        temp = [];
+            
+        if((arr.every((el => el != "")))){
+            winLose('tie');
+        }
+
+        return result;
     }
 
     function playerNames(){
@@ -64,8 +117,9 @@
     const boardDisplay = () =>{
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
             renderSymbols(e.target);
-            checkNCompleteArr(e.target);
+            completeArr(e.target);
             console.log(boardArr);
+            console.log(checkGame(boardArr));
         })
     }
 
