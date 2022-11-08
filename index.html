@@ -22,9 +22,9 @@
         </form>
     </div>
 
-    <p><span id="playerNameTurn"></span> is your turn.</p>
-    <div class="game-board">
-        <div class="divBoard" data-key="0" data-turn="free"></div>
+    <p id="pPlayer" style="display: none;"><span id="playerNameTurn" ></span> is your turn.</p>
+    <div style="display: none;" class="game-board">
+    <!--    <div class="divBoard" data-key="0" data-turn="free"></div>
         <div class="divBoard" data-key="1" data-turn="free"></div>
         <div class="divBoard" data-key="2" data-turn="free"></div>
         <div class="divBoard" data-key="3" data-turn="free"></div>
@@ -33,14 +33,16 @@
         <div class="divBoard" data-key="6" data-turn="free"></div>
         <div class="divBoard" data-key="7" data-turn="free"></div>
         <div class="divBoard" data-key="8" data-turn="free"></div>
+    -->
     </div>
 
-    <div class="finishDiv">
-        <div class="winDiv">
+    <div class="finishDiv" style="display: none;">
+        <div class="winDiv" style="display: none;">
             <h1>Congratulations!!!</h1>
             <h1><span id="winner"></span>WINS!!!</h1>
         </div>
-        <div class="tieDiv">
+        
+        <div class="tieDiv" style="display: none;">
             <h1>It's a tie!!!</h1>
         </div>
         <form action="">

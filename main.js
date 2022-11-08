@@ -8,6 +8,19 @@
         
             turn: {turn:'playerOne'},
     }
+
+    let createGrid = (board, boardSize = 3) => {
+        let divs = boardSize * boardSize;
+        board.style.setProperty('grid-template-columns', `repeat(${boardSize}, 1fr)`);
+
+        for(let i = 0; i < divs; i++){
+            let boardDiv = document.createElement('div');
+            boardDiv.setAttribute('class', 'divBoard');
+            boardDiv.setAttribute('data-key', `${i}`);
+            boardDiv.setAttribute('data-turn', `free`);
+            board.appendChild(boardDiv);
+        }
+    }
     
     const boardArr = ['', '', '', '', '', '', '', '', '']
 
@@ -20,10 +33,16 @@
         let $gameBoardDiv = document.querySelector('.game-board');
         let playerNameTurn = document.querySelector('#playerNameTurn');
         let playerWinner = document.querySelector('#winner');
+        let pPlayer = document.querySelector('#pPlayer');
+        let finishDiv = document.querySelector('.finishDiv');
+        let winDiv = document.querySelector('.winDiv');
+        let tieDiv = document.querySelector('.tieDiv');
+        let startDiv = document.querySelector('.start');
         return{
             playerX, playerO, $letsPlay,
             $playAgain, $newGame, $gameBoardDiv,
-            playerNameTurn, playerWinner
+            playerNameTurn, playerWinner, pPlayer,
+            winDiv, finishDiv, tieDiv, startDiv
         }
     }
     
@@ -49,7 +68,7 @@
                     result = temp[0];
                 }
             }else if(la == 'tie'){
-                result ='tie';
+                result = 'tie';
             }else{
                 return false;
             }
@@ -119,14 +138,30 @@
         if(checkGame(boardArr) == 'playerOne'){
             input()['playerWinner'].textContent = players['playerOne']['name'];
             players['playerOne']['points']++;
+            input()['finishDiv'].style.display = 'block';
+            input()['winDiv'].style.display = 'block';
         }else if(checkGame(boardArr) == 'playerTwo'){
             input()['playerWinner'].textContent = players['playerTwo']['name'];
             players['playerTwo']['points']++;
+            input()['finishDiv'].style.display = 'block';
+            input()['winDiv'].style.display = 'block';
+        }else if(checkGame(boardArr) == 'tie'){
+            input()['finishDiv'].style.display = 'block';
+            input()['tieDiv'].style.display = 'block';
         }else{
             return false;
         }
 
     }
+
+    function showAndHide(){
+        input()['playerNameTurn'].textContent = players['playerOne']['name'];
+        input()['pPlayer'].style.display = 'block';
+        input()['$gameBoardDiv'].style.display = 'grid';
+        input()['startDiv'].style.display = 'none';
+        createGrid(input()['$gameBoardDiv'], 3);
+    }
+
     const boardDisplay = () =>{
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
             renderSymbols(e.target);
@@ -135,14 +170,13 @@
             winTiePoints();
         })
     }
-
-    
+      
     const letsPlay = () => {
         input()['$letsPlay'].addEventListener('click', (e) => {
             input();
             playerNames();         
             boardDisplay();
-            input()['playerNameTurn'].textContent = players['playerOne']['name'];
+            showAndHide();
         })
     }
 
