@@ -174,6 +174,14 @@
         
     }
 
+    function removeChildFromBoard(board){
+        
+        while(board.firstChild){
+            board.removeChild(board.firstChild);
+        }
+
+    }
+
     const boardDisplay = () =>{
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
             renderSymbols(e.target);
@@ -195,6 +203,16 @@
             boardDisplay();
             showAndHide();
             createGrid(input()['$gameBoardDiv'], input()['$boardSize'].value);
+        })
+
+        input()['$playAgain'].addEventListener('click', (e) =>{
+            removeChildFromBoard(input()['$gameBoardDiv']);
+            createGrid(input()['$gameBoardDiv'], input()['$boardSize'].value);
+            boardArr = createArr(input()['$boardSize'].value);
+        })
+
+        input()['$newGame'].addEventListener('click', (e) =>{
+            window.location.reload();
         })
     }
 
