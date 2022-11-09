@@ -9,6 +9,8 @@
             turn: {turn:'playerOne'},
     }
 
+    let boardArr = [];
+
     let createGrid = (board, boardSize = 3) => {
         let divs = boardSize * boardSize;
         board.style.setProperty('grid-template-columns', `repeat(${boardSize}, 1fr)`);
@@ -22,7 +24,14 @@
         }
     }
     
-    const boardArr = ['', '', '', '', '', '', '', '', '']
+    function createArr (boardSize = 3) {
+        let arr = [];
+        for(let i = 0; i < (boardSize * boardSize); i++){
+            arr.push('');
+        }
+        
+        return arr;
+    }
 
     const input = () => {
         let playerX = document.querySelector('#pONE');
@@ -38,11 +47,14 @@
         let winDiv = document.querySelector('.winDiv');
         let tieDiv = document.querySelector('.tieDiv');
         let startDiv = document.querySelector('.start');
+        let $boardSize = document.querySelector('#boardSize');
+        let boardSizeShow = document.querySelector('#boardSizeShow');
         return{
             playerX, playerO, $letsPlay,
             $playAgain, $newGame, $gameBoardDiv,
             playerNameTurn, playerWinner, pPlayer,
-            winDiv, finishDiv, tieDiv, startDiv
+            winDiv, finishDiv, tieDiv, startDiv,
+            $boardSize, boardSizeShow
         }
     }
     
@@ -159,7 +171,7 @@
         input()['pPlayer'].style.display = 'block';
         input()['$gameBoardDiv'].style.display = 'grid';
         input()['startDiv'].style.display = 'none';
-        createGrid(input()['$gameBoardDiv'], 3);
+        
     }
 
     const boardDisplay = () =>{
@@ -172,11 +184,17 @@
     }
       
     const letsPlay = () => {
+        input()['$boardSize'].addEventListener('input', () =>{
+            input()['boardSizeShow'].textContent = `${input()['$boardSize'].value}X${input()['$boardSize'].value}`;
+        })
+
         input()['$letsPlay'].addEventListener('click', (e) => {
             input();
+            boardArr = createArr(input()['$boardSize'].value);
             playerNames();         
             boardDisplay();
             showAndHide();
+            createGrid(input()['$gameBoardDiv'], input()['$boardSize'].value);
         })
     }
 

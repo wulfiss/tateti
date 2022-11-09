@@ -18,23 +18,15 @@
             <input type="text" name="playerOne" id="pONE" value="Player One">
             <label for="pTWO">O:</label>
             <input type="text" name="playerTwo" id="pTWO" value="Player Two">
-            <button type="button" class="startGame" id="letsPlay">Let's Play!</button>    
+            <label for="boardSize" id="boardSizeShow">3X3</label>
+            <input type="range" min="3" max="30" value="3" class="slider" id="boardSize">
+            <button type="button" class="startGame" id="letsPlay">Let's Play!</button> 
         </form>
     </div>
 
     <p id="pPlayer" style="display: none;"><span id="playerNameTurn" ></span> is your turn.</p>
-    <div style="display: none;" class="game-board">
-    <!--    <div class="divBoard" data-key="0" data-turn="free"></div>
-        <div class="divBoard" data-key="1" data-turn="free"></div>
-        <div class="divBoard" data-key="2" data-turn="free"></div>
-        <div class="divBoard" data-key="3" data-turn="free"></div>
-        <div class="divBoard" data-key="4" data-turn="free"></div>
-        <div class="divBoard" data-key="5" data-turn="free"></div>
-        <div class="divBoard" data-key="6" data-turn="free"></div>
-        <div class="divBoard" data-key="7" data-turn="free"></div>
-        <div class="divBoard" data-key="8" data-turn="free"></div>
-    -->
-    </div>
+    
+    <div style="display: none;" class="game-board"></div>
 
     <div class="finishDiv" style="display: none;">
         <div class="winDiv" style="display: none;">
