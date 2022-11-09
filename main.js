@@ -166,11 +166,17 @@
 
     }
 
-    function showAndHide(){
-        input()['playerNameTurn'].textContent = players['playerOne']['name'];
-        input()['pPlayer'].style.display = 'block';
-        input()['$gameBoardDiv'].style.display = 'grid';
-        input()['startDiv'].style.display = 'none';
+    function showAndHide(str){
+        if(str == 'new'){
+            input()['playerNameTurn'].textContent = players['playerOne']['name'];
+            input()['pPlayer'].style.display = 'block';
+            input()['$gameBoardDiv'].style.display = 'grid';
+            input()['startDiv'].style.display = 'none';
+        }else if(str == 'again'){
+            input()['finishDiv'].style.display = 'none';
+            input()['tieDiv'].style.display = 'none';
+            input()['winDiv'].style.display = 'none';
+        }
         
     }
 
@@ -201,7 +207,7 @@
             boardArr = createArr(input()['$boardSize'].value);
             playerNames();         
             boardDisplay();
-            showAndHide();
+            showAndHide('new');
             createGrid(input()['$gameBoardDiv'], input()['$boardSize'].value);
         })
 
@@ -209,6 +215,7 @@
             removeChildFromBoard(input()['$gameBoardDiv']);
             createGrid(input()['$gameBoardDiv'], input()['$boardSize'].value);
             boardArr = createArr(input()['$boardSize'].value);
+            showAndHide('again');
         })
 
         input()['$newGame'].addEventListener('click', (e) =>{
