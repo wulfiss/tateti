@@ -13,7 +13,9 @@
 
     let createGrid = (board, boardSize = 3) => {
         let divs = boardSize * boardSize;
-        board.style.setProperty('grid-template-columns', `repeat(${boardSize}, 1fr)`);
+        
+        board.style.setProperty('--grid-cols', `repeat(${boardSize}, 1fr)`);//avoid divs resizing
+        board.style.setProperty('--grid-rows', `repeat(${boardSize}, 1fr)`);//
 
         for(let i = 0; i < divs; i++){
             let boardDiv = document.createElement('div');
@@ -57,7 +59,7 @@
             $boardSize, boardSizeShow
         }
     }
-    
+    //target.dataset.blabla for to use data-bla properties
     function completeArr(target){
         let inx = target.dataset.key;
 
@@ -132,11 +134,13 @@
             if(players['turn']['turn'] == 'playerOne'){
                 target.textContent = 'X';
                 target.dataset.turn = 'used';
+                target.style.setProperty('background-color', '#ef4444');
                 input()['playerNameTurn'].textContent = players['playerTwo']['name'];
                 players['turn']['turn'] = 'playerTwo';
             }else if(players['turn']['turn'] == 'playerTwo'){
                 target.textContent = 'O';
                 target.dataset.turn = 'used';
+                target.style.setProperty('background-color', '#bef264');
                 input()['playerNameTurn'].textContent = players['playerOne']['name'];
                 players['turn']['turn'] = 'playerOne';
             }

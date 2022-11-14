@@ -353,13 +353,18 @@
 
   /*====================================================================================*/
 
+  :root{
+    --grid-cols: repeat(3, 1fr);
+    --grid-rows: repeat(3, 1fr);
+  }
+
   div.game-board{
     width: 600px;
     height: 600px;
     border: 1px solid red;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: var(--grid-cols);
+    grid-template-rows: var(--grid-rows);
   }
 
   div.divBoard{
@@ -367,12 +372,10 @@
     height: auto;
     border: 1px solid red;
     font-size: 100%;
-    padding: 0;
-    margin: 0;
   }
 
   div.divBoard:hover{
-    background-color: khaki;
+    background-color: #f0e68c;
   }
 
   div.finishDiv{
