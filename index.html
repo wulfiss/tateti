@@ -13,14 +13,24 @@
     <div class="start">
         <h1>Tic Tac Toe</h1>
         <form action="">
-            <p>Enter players names:</p>
-            <label for="pONE">X:</label>
-            <input type="text" name="playerOne" id="pONE" value="Player One">
-            <label for="pTWO">O:</label>
-            <input type="text" name="playerTwo" id="pTWO" value="Player Two">
-            <label for="boardSize" id="boardSizeShow">3X3</label>
-            <input type="range" min="3" max="30" value="3" class="slider" id="boardSize">
-            <button type="button" class="startGame" id="letsPlay">Let's Play!</button> 
+            <fieldset>
+                
+                <ul>
+                    <li>
+                        <label for="pONE">X:</label>
+                        <input type="text" name="playerOne" id="pONE" value="Player One">
+                    </li>
+                    <li>
+                        <label for="pTWO">O:</label>
+                        <input type="text" name="playerTwo" id="pTWO" value="Player Two">
+                    </li>
+                    <li class="sliderSize">
+                        <label for="boardSize" id="boardSizeShow">3X3</label>
+                        <input type="range" min="3" max="10" value="3" class="slider" id="boardSize">
+                    </li>
+                </ul>
+                <button type="button" class="startGame" id="letsPlay">Let's Play!</button> 
+            </fieldset>
         </form>
     </div>
 

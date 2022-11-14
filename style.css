@@ -374,10 +374,7 @@
     font-size: 100%;
   }
 
-  div.divBoard:hover{
-    background-color: #f0e68c;
-  }
-
+/*float message*/
   div.finishDiv{
     display: none;
     position: fixed;
@@ -397,4 +394,37 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+  }
+
+  /***** Start section***/
+
+  div.start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  li{
+    list-style: none;
+    margin: 5px;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .sliderSize{
+    text-align: center;
+  }
+
+  fieldset{
+    text-align: center;
+    border-radius: 10px;
+    
   }
