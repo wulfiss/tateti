@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Tic Tac Toe</h1>
+    </header>
 
     <div class="start">
-        <h1>Tic Tac Toe</h1>
         <form action="">
             <fieldset>
                 
@@ -33,10 +35,11 @@
             </fieldset>
         </form>
     </div>
-
-    <p id="pPlayer" style="display: none;"><span id="playerNameTurn" ></span> is your turn.</p>
     
-    <div style="display: none;" class="game-board"></div>
+    <div class="boardContainer">
+        <p id="pPlayer" style="display: none;"><span id="playerNameTurn" ></span> is your turn.</p>
+        <div style="display: none;" class="game-board"></div>
+    </div>
 
     <div class="finishDiv">
         <div class="finishDivContent">
