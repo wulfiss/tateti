@@ -44,7 +44,6 @@
         let $gameBoardDiv = document.querySelector('.game-board');
         let playerNameTurn = document.querySelector('#playerNameTurn');
         let playerWinner = document.querySelector('#winner');
-        //let pPlayer = document.querySelector('#pPlayer');
         let finishDiv = document.querySelector('.finishDiv');
         let winDiv = document.querySelector('.winDiv');
         let tieDiv = document.querySelector('.tieDiv');
@@ -52,13 +51,21 @@
         let $boardSize = document.querySelector('#boardSize');
         let boardSizeShow = document.querySelector('#boardSizeShow');
         let boardContainer = document.querySelector('.boardContainer');
+        let playerOneName = document.querySelector('#playerOneName');
+        let playerTwoName = document.querySelector('#playerTwoName');
+        let playerOnePoints = document.querySelector('#playerOnePoints');
+        let playerTwoPoints = document.querySelector('#playerTwoPoints');
+        let playerOne = document.querySelector('#playerOne');
+        let playerTwo = document.querySelector('#playerTwo');
 
         return{
             playerX, playerO, $letsPlay,
             $playAgain, $newGame, $gameBoardDiv,
             playerNameTurn, playerWinner,
             winDiv, finishDiv, tieDiv, startDiv,
-            $boardSize, boardSizeShow, boardContainer
+            $boardSize, boardSizeShow, boardContainer,
+            playerOneName, playerTwoName, playerOnePoints,
+            playerTwoPoints, playerOne, playerTwo
         }
     }
     //target.dataset.blabla for to use data-bla properties
@@ -174,10 +181,9 @@
 
     function showAndHide(str){
         if(str == 'new'){
-            //input()['playerNameTurn'].textContent = players['playerOne']['name'];
-            //input()['pPlayer'].style.display = 'block';
+            input()['playerOneName'].textContent = players['playerOne']['name'];
+            input()['playerTwoName'].textContent = players['playerTwo']['name'];
             input()['boardContainer'].style.display = 'flex';
-            //input()['$gameBoardDiv'].style.display = 'grid';
             input()['startDiv'].style.display = 'none';
         }else if(str == 'again'){
             input()['finishDiv'].style.display = 'none';
