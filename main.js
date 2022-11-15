@@ -44,19 +44,21 @@
         let $gameBoardDiv = document.querySelector('.game-board');
         let playerNameTurn = document.querySelector('#playerNameTurn');
         let playerWinner = document.querySelector('#winner');
-        let pPlayer = document.querySelector('#pPlayer');
+        //let pPlayer = document.querySelector('#pPlayer');
         let finishDiv = document.querySelector('.finishDiv');
         let winDiv = document.querySelector('.winDiv');
         let tieDiv = document.querySelector('.tieDiv');
         let startDiv = document.querySelector('.start');
         let $boardSize = document.querySelector('#boardSize');
         let boardSizeShow = document.querySelector('#boardSizeShow');
+        let boardContainer = document.querySelector('.boardContainer');
+
         return{
             playerX, playerO, $letsPlay,
             $playAgain, $newGame, $gameBoardDiv,
-            playerNameTurn, playerWinner, pPlayer,
+            playerNameTurn, playerWinner,
             winDiv, finishDiv, tieDiv, startDiv,
-            $boardSize, boardSizeShow
+            $boardSize, boardSizeShow, boardContainer
         }
     }
     //target.dataset.blabla for to use data-bla properties
@@ -135,13 +137,13 @@
                 target.textContent = 'X';
                 target.dataset.turn = 'used';
                 target.style.setProperty('background-color', '#ef4444');
-                input()['playerNameTurn'].textContent = players['playerTwo']['name'];
+                //input()['playerNameTurn'].textContent = players['playerTwo']['name'];
                 players['turn']['turn'] = 'playerTwo';
             }else if(players['turn']['turn'] == 'playerTwo'){
                 target.textContent = 'O';
                 target.dataset.turn = 'used';
                 target.style.setProperty('background-color', '#bef264');
-                input()['playerNameTurn'].textContent = players['playerOne']['name'];
+                //input()['playerNameTurn'].textContent = players['playerOne']['name'];
                 players['turn']['turn'] = 'playerOne';
             }
         }else if(target.dataset.turn == 'used'){
@@ -174,7 +176,8 @@
         if(str == 'new'){
             //input()['playerNameTurn'].textContent = players['playerOne']['name'];
             //input()['pPlayer'].style.display = 'block';
-            input()['$gameBoardDiv'].style.display = 'grid';
+            input()['boardContainer'].style.display = 'flex';
+            //input()['$gameBoardDiv'].style.display = 'grid';
             input()['startDiv'].style.display = 'none';
         }else if(str == 'again'){
             input()['finishDiv'].style.display = 'none';
