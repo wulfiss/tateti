@@ -172,8 +172,8 @@
 
     function showAndHide(str){
         if(str == 'new'){
-            input()['playerNameTurn'].textContent = players['playerOne']['name'];
-            input()['pPlayer'].style.display = 'block';
+            //input()['playerNameTurn'].textContent = players['playerOne']['name'];
+            //input()['pPlayer'].style.display = 'block';
             input()['$gameBoardDiv'].style.display = 'grid';
             input()['startDiv'].style.display = 'none';
         }else if(str == 'again'){
