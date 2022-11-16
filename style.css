@@ -358,6 +358,11 @@
     --grid-rows: repeat(3, 1fr);
     --board-size-l: px;
     --board-size-s: px;
+    --div-col-One:#ef4444;
+    --div-col-Two:#bef264;
+    --div-col-default: #e5e5e5;
+    --div-font-large: 2.7em;
+    --div-font-small: 1.6em;
   }
   
   header{
@@ -376,6 +381,8 @@
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
   }
 
   div.finishDivContent{
@@ -384,6 +391,21 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 10%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .winDiv{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .winDiv p{
+    margin: 0;
   }
 
   /***** Start section***/
@@ -429,36 +451,62 @@
   }
 
   div.game-board{
-    width: 345px;
-    height: 345px;
-    border: 1px solid red;
+    width: 550px;
+    height: 550px;
     display: grid;
     grid-template-columns: var(--grid-cols);
     grid-template-rows: var(--grid-rows);
+    gap: 5px;
   }
 
   div.divBoard{
     width: auto;
     height: auto;
-    border: 1px solid red;
-    font-size: 100%;
+    border-radius: 10px;
+    font-size: var(--div-font-large);
+    background-color: var(--div-col-default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   div#playerPointsTurn{
     display: flex;
     width: 290px;
     height: 35px;
-    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .players{
-    border: 1px solid black;
     border-radius: 12px;
+    height: 34px;
     width: 130px;
-    text-align: center;
-    padding: 6px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
   }
 
-  #playerOne{
-    border-color: red;
+  div#playerOne{
+    background-color: var(--div-col-One);
   }
+
+  div#playerTwo{
+    background-color: var(--div-col-default);
+  }
+
+
+
+
+
+@media (max-width: 412px) {
+  div.game-board{
+    width: 345px;
+    height: 345px;
+  }
+
+  div.divBoard{
+    font-size: var(--div-font-small);
+  }
+}

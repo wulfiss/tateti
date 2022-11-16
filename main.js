@@ -144,13 +144,15 @@
                 target.textContent = 'X';
                 target.dataset.turn = 'used';
                 target.style.setProperty('background-color', '#ef4444');
-                //input()['playerNameTurn'].textContent = players['playerTwo']['name'];
+                input()['playerTwo'].style.setProperty('background-color','var(--div-col-Two)');
+                input()['playerOne'].style.setProperty('background-color','var(--div-col-default)');
                 players['turn']['turn'] = 'playerTwo';
             }else if(players['turn']['turn'] == 'playerTwo'){
                 target.textContent = 'O';
                 target.dataset.turn = 'used';
                 target.style.setProperty('background-color', '#bef264');
-                //input()['playerNameTurn'].textContent = players['playerOne']['name'];
+                input()['playerOne'].style.setProperty('background-color','var(--div-col-One)');
+                input()['playerTwo'].style.setProperty('background-color','var(--div-col-default)');
                 players['turn']['turn'] = 'playerOne';
             }
         }else if(target.dataset.turn == 'used'){
@@ -163,16 +165,16 @@
         if(checkGame(boardArr) == 'playerOne'){
             input()['playerWinner'].textContent = players['playerOne']['name'];
             players['playerOne']['points']++;
-            input()['finishDiv'].style.display = 'block';
-            input()['winDiv'].style.display = 'block';
+            input()['finishDiv'].style.display = 'flex';
+            input()['winDiv'].style.display = 'flex';
         }else if(checkGame(boardArr) == 'playerTwo'){
             input()['playerWinner'].textContent = players['playerTwo']['name'];
             players['playerTwo']['points']++;
-            input()['finishDiv'].style.display = 'block';
-            input()['winDiv'].style.display = 'block';
+            input()['finishDiv'].style.display = 'flex';
+            input()['winDiv'].style.display = 'flex';
         }else if(checkGame(boardArr) == 'tie'){
-            input()['finishDiv'].style.display = 'block';
-            input()['tieDiv'].style.display = 'block';
+            input()['finishDiv'].style.display = 'flex';
+            input()['tieDiv'].style.display = 'flex';
         }else{
             return false;
         }
@@ -189,6 +191,8 @@
             input()['finishDiv'].style.display = 'none';
             input()['tieDiv'].style.display = 'none';
             input()['winDiv'].style.display = 'none';
+            input()['playerOnePoints'].textContent = players['playerOne']['points'];
+            input()['playerTwoPoints'].textContent = players['playerTwo']['points'];
         }
         
     }
