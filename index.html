@@ -9,8 +9,62 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-board"></div>
-    <div></div>
+    <header>
+        <h1>Tic Tac Toe</h1>
+    </header>
+
+    <div class="start">
+        <form action="">
+            <fieldset>
+                
+                <ul>
+                    <li>
+                        <label for="pONE">X:</label>
+                        <input type="text" name="playerOne" id="pONE" value="Player One">
+                    </li>
+                    <li>
+                        <label for="pTWO">O:</label>
+                        <input type="text" name="playerTwo" id="pTWO" value="Player Two">
+                    </li>
+                    <li class="sliderSize">
+                        <label for="boardSize">Board Size: <span id="boardSizeShow">3X3</span></label><br>
+                        <input type="range" min="3" max="10" value="3" class="slider" id="boardSize">
+                    </li>
+                </ul>
+                <button type="button" class="startGame" id="letsPlay">Let's Play!</button> 
+            </fieldset>
+        </form>
+    </div>
+    
+    <div class="boardContainer">
+        
+        <div id="playerPointsTurn">
+            <div id="playerOne" class="players">
+                <span id="playerOneName">playerOne</span> <span id="playerOnePoints">0</span>
+            </div>
+            <div id="playerTwo" class="players">
+                <span id="playerTwoName">playerTwo</span> <span id="playerTwoPoints">0</span>
+            </div>
+        </div>
+        <div class="game-board"></div>
+    </div>
+
+    <div class="finishDiv">
+        <div class="finishDivContent">
+            <div class="winDiv" style="display: none;">
+                <p><span id="winner"></span> WINS!!!</p>
+            </div>
+            
+            <div class="tieDiv" style="display: none;">
+                <p>It's a tie!!!</p>
+            </div>
+            <form action="">
+                <button type="button" id="playAgain">Play again</button>
+                <button type="button" id="newGame">Start new game</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
 

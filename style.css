@@ -11,6 +11,7 @@
  html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    width: auto;
   }
   
   /* Sections
@@ -353,21 +354,175 @@
 
   /*====================================================================================*/
 
+  :root{
+    --grid-cols: repeat(3, 1fr);
+    --grid-rows: repeat(3, 1fr);
+    --board-size-l: px;
+    --board-size-s: px;
+    --div-col-One:#ef4444;
+    --div-col-Two:#bef264;
+    --div-col-default: #e5e5e5;
+    --div-font-large: 2.7em;
+    --div-font-small: 1.6em;
+  }
+  
+  *{
+    box-sizing: border-box;
+  }
+  
+  body{
+    margin: 0;
+    overflow-x: hidden;
+    padding-left: 2px;
+  }
+
+  header{
+    text-align: center;
+  }
+
+/*float message*/
+  div.finishDiv{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.finishDivContent{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 10%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .winDiv{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .winDiv p{
+    margin: 0;
+  }
+
+  /***** Start section***/
+
+  div.start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  li{
+    list-style: none;
+    margin: 5px;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .sliderSize{
+    text-align: center;
+  }
+
+  fieldset{
+    text-align: center;
+    border-radius: 10px; 
+  }
+
+
+  /***board-section****/
+  
+  div.boardContainer{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
   div.game-board{
-    width: 600px;
-    height: 600px;
-    border: 1px solid red;
+    width: 550px;
+    height: 550px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: var(--grid-cols);
+    grid-template-rows: var(--grid-rows);
+    gap: 5px;
   }
 
   div.divBoard{
     width: auto;
     height: auto;
-    border: 1px solid red;
+    border-radius: 10px;
+    font-size: var(--div-font-large);
+    background-color: var(--div-col-default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  div.divBoard:hover{
-    background-color: khaki;
+  div#playerPointsTurn{
+    display: flex;
+    width: 290px;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
   }
+
+  .players{
+    border-radius: 12px;
+    height: 34px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  div#playerOne{
+    background-color: var(--div-col-One);
+  }
+
+  div#playerTwo{
+    background-color: var(--div-col-default);
+  }
+
+
+
+
+
+@media (max-width: 480px) {
+  body{
+    width: 358px;
+    margin-inline: auto;
+  }
+
+  div.game-board{
+    width: 345px;
+    height: 345px;
+  }
+
+  div.divBoard{
+    font-size: var(--div-font-small);
+  }
+}
