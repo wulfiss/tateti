@@ -504,6 +504,7 @@
 @media (max-width: 412px) {
   body{
     width: 358px;
+    margin-inline: auto;
   }
 
   div.game-board{
