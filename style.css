@@ -11,6 +11,7 @@
  html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    width: auto;
   }
   
   /* Sections
@@ -501,6 +502,10 @@
 
 
 @media (max-width: 412px) {
+  body{
+    width: 358px;
+  }
+
   div.game-board{
     width: 345px;
     height: 345px;
