@@ -92,6 +92,8 @@
                 }
             }else if(la == 'tie'){
                 result = 'tie';
+            }else if(temp.every(el => el != temp)){
+
             }else{
                 return false;
             }
@@ -209,7 +211,6 @@
         input()['$gameBoardDiv'].addEventListener('click', (e) => {
             renderSymbols(e.target);
             completeArr(e.target);
-            console.log(boardArr);
             winTiePoints();
         })
     }
